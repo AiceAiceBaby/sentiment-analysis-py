@@ -22,14 +22,16 @@ def number_happy(sentence):
     global happyWordCount
     for word in sentence.split():
         if dataset_matcher(word, "positive-words.txt"): happyWordCount += 1
-        else: sentiment_analyser(word)
+        elif not dataset_matcher(word, "negative-words.txt"):
+            sentiment_analyser(word)
 
 
 def number_sad(sentence):
     global sadWordCount
     for word in sentence.split():
         if dataset_matcher(word, "negative-words.txt"): sadWordCount += 1
-        else: sentiment_analyser(word)
+        elif not dataset_matcher(word, "positive-words.txt"):
+            sentiment_analyser(word)
 
 
 def output_analysis():
